@@ -5,8 +5,8 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import AstroPWA from "@vite-pwa/astro";
 import pagefind from "astro-pagefind";
-// import mdx from "@astrojs/mdx";
-
+import mdx from "@astrojs/mdx";
+import typst from "@zrr-blog/astro-typst";
 import remarkMath from "remark-math";
 import remarkCodeTitles from "remark-code-titles";
 // import remarkToc from "remark-toc";
@@ -23,7 +23,8 @@ export default defineConfig({
   prefetch: true,
   site: SITE.website,
   integrations: [
-    // mdx(),
+    mdx(),
+    typst(),
     sitemap(),
     vue(),
     react(),
@@ -47,11 +48,11 @@ export default defineConfig({
       wrap: true,
     },
   },
-  // vite: {
-  //   optimizeDeps: {
-  //     exclude: ["@resvg/resvg-js"],
-  //   },
-  // },
+  vite: {
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
   // scopedStyleStrategy: "where",
   // experimental: {
   //   contentLayer: true,
