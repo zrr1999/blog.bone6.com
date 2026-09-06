@@ -16,6 +16,7 @@ export interface Props {
   pubDatetime?: Date;
   modDatetime?: Date | null;
   scrollSmooth?: boolean;
+  katex?: boolean;
 }
 
 const {
@@ -28,6 +29,7 @@ const {
   pubDatetime,
   modDatetime,
   scrollSmooth = false,
+  katex = false,
 } = Astro.props;
 
 const socialImageURL = new URL(ogImage, Astro.url);
@@ -64,12 +66,16 @@ const structuredData = pubDatetime
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
-    <link
-      rel="stylesheet"
-      href="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
-      integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
-      crossorigin="anonymous"
-    />
+    {
+      katex && (
+        <link
+          rel="stylesheet"
+          href="https://fastly.jsdelivr.net/npm/katex@0.16.47/dist/katex.min.css"
+          integrity="sha384-nH0MfJ44wi1dd7w6jinlyBgljjS8EJAh2JBoRad8a3VDw2K69vfaaqm4WnR+gXtA"
+          crossorigin="anonymous"
+        />
+      )
+    }
     <meta name="generator" content={Astro.generator} />
     <!-- General Meta Tags -->
     <title>{title}</title>

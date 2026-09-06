@@ -43,16 +43,10 @@
     "typescript": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/react": "^6.0.1",
     "@astrojs/sitemap": "^3.7.3",
-    "@astrojs/vue": "^7.0.1",
     "@tailwindcss/typography": "catalog:",
     "@types/lodash.kebabcase": "^4.1.9",
-    "@types/react": "^19.2.17",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
     "vite": "catalog:",
-    "vite-plus": "catalog:",
-    "vue": "3.5.42"
+    "vite-plus": "catalog:"
   }
 }

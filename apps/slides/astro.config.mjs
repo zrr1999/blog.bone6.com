@@ -1,8 +1,5 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import AstroPWA from "@vite-pwa/astro";
-
-import preact from "@astrojs/preact";
 
 import {
   hostingSlidesCopyIntegration,
@@ -16,7 +13,7 @@ export default defineConfig({
     locales: ["en", "zh-cn"],
     defaultLocale: "zh-cn",
   },
-  integrations: [hostingSlidesCopyIntegration(), AstroPWA(), preact()],
+  integrations: [hostingSlidesCopyIntegration()],
   vite: {
     plugins: [hostingSlidesPublicPlugin(), tailwindcss()],
   },

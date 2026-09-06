@@ -19,6 +19,11 @@
   --g1: color-mix(in srgb, var(--brand-accent-bright) 18%, transparent);
   --g2: color-mix(in srgb, var(--brand-teal) 12%, transparent);
   --g3: rgba(255, 163, 74, 0.1);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-hover: 150ms;
+  --duration-press: 160ms;
+  --duration-move: 200ms;
 }
 
 body {
@@ -56,7 +61,7 @@ body {
 /* 顶栏导航链接（React island 内也会用到，故放在全局） */
 .nav-link {
   position: relative;
-  transition: color 0.25s ease;
+  transition: color var(--duration-hover) ease;
 }
 .nav-link::after {
   content: "";
@@ -68,7 +73,7 @@ body {
   background: var(--fg);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform var(--duration-move) var(--ease-out);
 }
 .nav-link:hover {
   color: var(--fg);
@@ -129,6 +134,50 @@ body {
 
 .reveal-3 {
   animation-delay: 180ms;
+}
+
+.link-row {
+  transform-origin: left center;
+  transition:
+    transform var(--duration-press) var(--ease-out),
+    color var(--duration-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-row:hover {
+    transform: translateX(1rem);
+  }
+
+  .link-row:hover:active {
+    transform: translateX(1rem) scale(0.99);
+  }
+}
+
+.link-row:active {
+  transform: scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-2,
+  .reveal-3 {
+    animation: rise 200ms ease both;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .link-row:hover,
+  .link-row:active,
+  .link-row:hover:active {
+    transform: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

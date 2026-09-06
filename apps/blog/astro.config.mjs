@@ -1,7 +1,5 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import vue from "@astrojs/vue";
-import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import AstroPWA from "@vite-pwa/astro";
 import pagefind from "astro-pagefind";
@@ -61,8 +59,6 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    vue(),
-    react(),
     pagefind(),
     AstroPWA(),
   ],

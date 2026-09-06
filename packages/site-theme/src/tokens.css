@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-hover: 150ms;
+  --duration-press: 160ms;
+  --duration-move: 200ms;
+}
+
 :root,
 html[data-theme="light"] {
   --background: #fdfdfd;

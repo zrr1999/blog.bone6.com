@@ -124,12 +124,7 @@ const decks = slugs
                 </p>
                 <h2 class="mt-2 text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
                   {deck.meta.title}
-                  <span
-                    aria-hidden="true"
-                    class="ml-2 inline-block text-foreground/40 transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent"
-                  >
-                    →
-                  </span>
+                  <span aria-hidden="true" class="deck-arrow">→</span>
                 </h2>
                 {deck.meta.description && (
                   <p class="mt-2 text-sm leading-relaxed text-foreground/60">
@@ -178,7 +173,7 @@ const decks = slugs
 
   .nav-link {
     position: relative;
-    transition: color 0.25s ease;
+    transition: color var(--duration-hover) ease;
   }
   .nav-link::after {
     content: "";
@@ -190,12 +185,40 @@ const decks = slugs
     background: currentColor;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform var(--duration-move) var(--ease-out);
   }
   .nav-link:hover {
     color: var(--foreground);
   }
   .nav-link:hover::after {
     transform: scaleX(1);
+  }
+
+  .deck-arrow {
+    display: inline-block;
+    margin-left: 0.5rem;
+    color: color-mix(in srgb, var(--foreground) 40%, transparent);
+    transition:
+      transform var(--duration-press) var(--ease-out),
+      color var(--duration-hover) ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .group:hover .deck-arrow {
+      transform: translateX(0.25rem);
+      color: var(--accent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link,
+    .nav-link::after,
+    .deck-arrow {
+      transition: none;
+    }
+
+    .group:hover .deck-arrow {
+      transform: none;
+    }
   }
 </style>
